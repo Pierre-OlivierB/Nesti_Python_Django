@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Page</title>
+</head>
+<body>
+    <h1> Test php myadmin </h1>
+
+{% for getdata in Product %}
+ <tr>
+     <td>{{getdata.creation_date}}</td>
+     <td>{{getdata.recipe_name}}</td>
+     <td>{{getdata.number_people}}</td>
+ </tr>
+{% endfor %}
+</body>
+</html>
