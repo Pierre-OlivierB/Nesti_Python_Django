@@ -8,6 +8,14 @@
 <a href="{% url 'index' %}">
             <h1>Test Julien, encore!Nom de la boutique</h1>
 </a>
+{% if user.is_authenticated %}
+    {{ user.username }}
+<a href="{% url 'logout' %}">Déconnexion</a>
+{% else %}
+    <a href="{% url 'signup' %}">S'inscrire </a>
+{% endif %}
+
+
     {% block content %}
 
     {% endblock %}
