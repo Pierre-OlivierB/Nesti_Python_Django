@@ -2,11 +2,13 @@
 
     {% block content %}
 
+    {% for order in orders %}
+<h2>{{ order.product.name }} </h2>
+<img src="{{ order.product.thumbnail.url }}" alt="{{ order.product.name }}" style="max-width:200px">
+<p>{{ order.quantity }} dans le panier</p>
 
-    {% for product in products %}
-        <h2>{{ product.name }}</h2>
-        <img src="{{ product.thumbnail.url }}" alt="{{ product.name }}" style="max-width:200px">
-<a href="{{ product.get_absolute_url }}">Voir l'article</a>
     {% endfor %}
+
+<a href="{% url 'delete-cart' %}">Supprimer le panier</a>
 
     {% endblock %}
