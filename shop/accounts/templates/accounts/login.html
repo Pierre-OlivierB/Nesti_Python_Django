@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>S'inscrire</h1>
+<h1>Connexion</h1>
 <form method="POST">
     {% csrf_token %}
     <p>
@@ -12,7 +12,7 @@
         <label for="password">Mot de passe</label>
         <input type="password" name="password" id="password">
     </p>
-    <button type="submit">S'inscrire</button>
+    <button type="submit">Connexion</button>
 
 </form>
 
