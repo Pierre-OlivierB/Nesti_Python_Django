@@ -1,31 +1,73 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>La boutique test</title>
 </head>
 <body>
+
 <a href="{% url 'index' %}">
-            <h1>Test Julien, encore!Nom de la boutique</h1>
+            <h1>Nom de la boutique</h1>
 </a>
-{% if user.is_authenticated %}
+
+{% url 'index' as home %}
+
+
+<div class="nav_container">
+
+
+
+    <nav class="nav_item">
+        <ul class="align_nav">
+            <li class="nav_box">
+                <a class="{% if request.path == home %} active {% endif %}" href="{% url 'index' %}">Accueil</a>
+            </li>
+            <li class="nav_box">
+                <a class="{% if 'product' in request.path %} active {% endif %}" href="{% url 'index' %}">Nos suggestions</a>
+            </li>
+            <li class="nav_box">
+                <a href="">Recettes</a>
+            </li>
+            <li class="nav_box">
+                <a href="">Marché</a>
+            </li>
+        {% if user.cart %}
+            <li>
+                <div class="cart_nav">
+
+                    <a class="cart_nav_duo" href="{% url 'cart' %}">Voir le Panier ({{ user.cart.orders.count }})</a>
+                </div>
+                
+            </li>
+
+{% endif %}
+        </ul>
+    </nav>
+<div class="authen_part">
+    {% if user.is_authenticated %}
     {{ user.username }}
+
+
+
 <a href="{% url 'logout' %}">Déconnexion</a>
 {% else %}
     <a href="{% url 'login' %}">Connexion </a>
     <a href="{% url 'signup' %}">S'inscrire </a>
 {% endif %}
 
-{% if user.cart %}
-<p>
-    <a href="{% url 'cart' %}">Voir le Panier ({{ user.cart.orders.count }})</a>
-</p>
 
-{% endif %}
+</div>
+</div>
 
+
+<div class="container">
     {% block content %}
 
     {% endblock %}
+</div>
+
 
 </body>
 </html>

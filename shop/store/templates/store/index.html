@@ -4,9 +4,25 @@
 
 
     {% for product in products %}
+<div class="flyer">
+    <div class="article_detail">
         <h2>{{ product.name }}</h2>
         <img src="{{ product.thumbnail.url }}" alt="{{ product.name }}" style="max-width:200px">
-<a href="{{ product.get_absolute_url }}">Voir l'article</a>
+    </div>
+    <div class="article_info">
+        <p>Difficulté : </p>
+        <p>Pour :</p>
+        <p>Temps : </p>
+        <p>Chef : </p>
+    </div>
+    <div class="see_article">
+        <a href="{{ product.get_absolute_url }}">Voir l'article</a>
+    </div>
+
+
+</div>
+
+
     {% endfor %}
 
     {% endblock %}
