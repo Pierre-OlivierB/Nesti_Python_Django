@@ -130,3 +130,6 @@ dmypy.json
 
 #Plus
 shop/shop/settings.py
+
+#idea
+.idea/
