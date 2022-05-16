@@ -33,32 +33,8 @@
             <li class="nav_box">
                 <a href="">Marché</a>
             </li>
-        {% if user.cart %}
-            <li>
-                <div class="cart_nav">
-
-                    <a class="cart_nav_duo" href="{% url 'cart' %}">Voir le Panier ({{ user.cart.orders.count }})</a>
-                </div>
-                
-            </li>
-
-{% endif %}
         </ul>
     </nav>
-<div class="authen_part">
-    {% if user.is_authenticated %}
-    {{ user.username }}
-
-
-
-<a href="{% url 'logout' %}">Déconnexion</a>
-{% else %}
-    <a href="{% url 'login' %}">Connexion </a>
-    <a href="{% url 'signup' %}">S'inscrire </a>
-{% endif %}
-
-
-</div>
 </div>
 
 
