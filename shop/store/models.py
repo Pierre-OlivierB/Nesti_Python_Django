@@ -26,7 +26,10 @@ class Product(models.Model):
 
 
 #Article (Order)
+
 """
+
+
 - Utilisateur
 - Produit
 - Quantité
@@ -45,6 +48,7 @@ class Order(models.Model):
         return f"{self.product.name} ({self.quantity})"
 
 # Panier (Cart)
+
 """
 - Utilisateur
 - Articles
@@ -68,3 +72,43 @@ class Cart(models.Model):
 
         self.orders.clear()
         super().delete(*args, **kwargs)
+
+
+"""
+class City(models.Model):
+    name = models.CharField(max_length=50)
+
+
+class User(models.Model):
+    adress_1 = models.CharField(max_length=50)
+    adress_2 = models.CharField(blank=True, null=True, max_length=50)
+    creations_date = models.DateTimeField(blank=True, null=True)
+    email = models.CharField(max_length=200)
+    password = models.CharField(max_length=255)
+    firstname = models.CharField(max_length=50)
+    lastname = models.CharField(max_length=50)
+    status = models.CharField(max_length=1)
+    id_city = models.ForeignKey(City, on_delete=models.CASCADE)
+    zipcode = models.IntegerField(max_length=11)
+
+
+class Product(models.Model):
+    product_name = models.CharField(default='test', max_length=128)
+
+
+class Category(models.Model):
+    libelle = models.CharField(max_length=120)
+
+
+class Recipe(models.Model):
+    creation_date = models.DateTimeField(blank=True, null=True)
+    difficulty = models.SmallIntegerField(max_length=6)
+    id_category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    id_user = models.ForeignKey(User, on_delete=models.CASCADE)
+    number_people = models.IntegerField(max_length=11)
+    recipe_name = models.CharField(max_length=120)
+    recipe_time = models.TimeField(blank=True, null=True)
+
+"""
+
+
