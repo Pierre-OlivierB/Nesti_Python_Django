@@ -5,10 +5,13 @@
 
     {% for recipe in recipes %}
 
+
 <div class="flyer">
     <div class="article_detail">
         <h2>{{ recipe.recipe_name }}</h2>
-        <img src="{{ recipe.id_image }}" alt="{{ recipe.recipe_name }}" style="max-width:200px">
+{% for images in recipe.image_sets.all %}
+        <img src=" {{ image.i_name }}{{ image.extension }} " alt="{{ recipe.recipe_name }}" style="max-width:200px">
+{% endfor %}
     </div>
     <div class="article_info">
         <p>Difficulté : {{ recipe.difficulty }}</p>
