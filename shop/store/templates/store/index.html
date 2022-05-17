@@ -5,19 +5,18 @@
 
     {% for recipe in recipes %}
 
-
 <div class="flyer">
     <div class="article_detail">
         <h2>{{ recipe.recipe_name }}</h2>
-{% for images in recipe.image_sets.all %}
-        <img src=" {{ image.i_name }}{{ image.extension }} " alt="{{ recipe.recipe_name }}" style="max-width:200px">
-{% endfor %}
+
+        <img src="media/products/{{ recipe.id_image.i_name }}{{ recipe.id_image.extension }}" alt="{{ recipe.recipe_name }}" style="max-width:200px">
+
     </div>
     <div class="article_info">
         <p>Difficulté : {{ recipe.difficulty }}</p>
         <p>Pour : {{ recipe.number_people }}</p>
         <p>Temps : {{ recipe.recipe_time }}</p>
-        <p>Chef : {{ recipe.id_user }}</p>
+        <p>Chef : {{ recipe.id_user.firstname }} {{ recipe.id_user.lastname }}</p>
     </div>
     <div class="see_article">
         <a href="{{ recipe.get_absolute_url }}">Voir l'article</a>
@@ -25,7 +24,6 @@
 
 
 </div>
-
 
     {% endfor %}
 

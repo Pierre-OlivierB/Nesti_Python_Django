@@ -50,7 +50,6 @@ def delete_cart(request):
 
 def index(request):
     recipes = Recipe.objects.all()
-    images = Image.objects.all()
-    return render(request, 'store/index.html', context={"recipes": recipes, "images": images})
+    return render(request, 'store/index.html', context={"recipes": recipes})
 
 

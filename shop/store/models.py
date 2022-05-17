@@ -137,7 +137,7 @@ class Image(models.Model):
     extension = models.CharField(max_length=6)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'nesti2_image'
 
 
@@ -150,7 +150,8 @@ class Recipe(models.Model):
     number_people = models.IntegerField()
     recipe_name = models.CharField(max_length=120)
     recipe_time = models.TimeField(blank=True, null=True)
-    id_image = models.ForeignKey(Image, db_column='id_image', on_delete=models.CASCADE, related_name="image_sets")
+    id_image = models.ForeignKey(Image, db_column='id_image', on_delete=models.CASCADE)
+    #id_image = models.ForeignKey(Image, db_column='id_image', on_delete=models.CASCADE, related_name="image_sets")
     #id_image = models.ManyToManyField(Image)
 
     class Meta:
