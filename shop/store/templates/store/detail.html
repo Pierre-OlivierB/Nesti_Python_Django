@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
 {% block content%}
 
-        <h2>{{ product.name }}</h2>
-        <h3>{{ product.price }}€</h3>
-        <img src="{{ product.thumbnail.url }}" alt="{{ product.name }}" style="max-width:200px">
-        <p>{{ product.description }}</p>
-        <p>{{ product.stock }} en stock</p>
+        <h2>{{ recipe.recipe_name }}</h2>
+        <h3>{{ recipe.creation_date }}€</h3>
+        <img src="media/products/{{ recipe.id_image.i_name }}{{ recipe.id_image.extension }}" alt="{{ recipe.recipe_name }}" style="max-width:200px">
+        <p>Difficulté : {{ recipe.difficulty }}</p>
+        <p>Pour : {{ recipe.number_people }}</p>
+        <p>Temps : {{ recipe.recipe_time }}</p>
+        <p>Chef : {{ recipe.id_user.firstname }} {{ recipe.id_user.lastname }}</p>
+        <p></p>
+        <p>0 en stock</p>
 
-{% if user.is_authenticated %}
+{% if recipe.id_user.firstname == "test" %}
         <p>
                 <a href="{% url 'add-to-cart' product.slug %}">
                         Ajouter au panier

@@ -158,6 +158,8 @@ class Recipe(models.Model):
         managed = False
         db_table = 'nesti2_recipe'
 
+    def get_absolute_url(self):
+        return reverse("recipe", kwargs={"recipe_name": self.recipe_name})
 
 """
 #Measurement

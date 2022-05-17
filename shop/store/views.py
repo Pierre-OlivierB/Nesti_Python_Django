@@ -4,7 +4,7 @@ from django.urls import reverse
 
 #from store.models import Product, Cart, Order
 
-from store.models import Recipe, Image
+from store.models import Recipe
 #from store.models import City, User, Product, Category, Recipe, Image, #Measurement, Ingredients, Article, ArticlePrice, Lot, Command, UserLog, Chief, Moderator, Admin, Commentary, Paragraph, RecipeIngredient, Importation, OrderLine, GivesGrade
 
 """
@@ -51,5 +51,10 @@ def delete_cart(request):
 def index(request):
     recipes = Recipe.objects.all()
     return render(request, 'store/index.html', context={"recipes": recipes})
+
+
+def recipe_detail(request, recipe_name):
+    recipe = get_object_or_404(Recipe, recipe_name=recipe_name)
+    return render(request, 'store/detail.html', context={"recipe": recipe})
 
 
